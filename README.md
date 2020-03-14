@@ -1,5 +1,6 @@
 # archpup32
-**ArchPup32** devlopment sector
+**ArchPup32** 
+Puppy Linux woof-CE development sector
 
 On a modern 32-bit version of Puppy with devx installed:
 
