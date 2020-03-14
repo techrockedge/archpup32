@@ -1,0 +1,14 @@
+The .sfs in this iso are as follows:
+
+adrv contains the web browser
+
+fdrv contains a selection of firmware **
+
+ydrv contains an alternative xorg for older systems (optional install)
+
+zdrv contains the kernel in association with vmlinuz
+
+** To obtain a more comprehensive set of firmware download the latest sfs from:
+http://www.fishprogs.software/puppy/firmware-sfs/
+
+and rename it to the same fdrv name

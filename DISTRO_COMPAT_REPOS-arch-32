@@ -1,0 +1,20 @@
+#250120 peebee for a32pup from archlinux32
+#where to get pkg docs, format: domain|uri|localfilename...
+
+PKG_DOCS_DISTRO_COMPAT="
+z|https://mirror.archlinux32.org/pentium4/core/core.db.tar.gz|Packages-${DISTRO_BINARY_COMPAT}-${DISTRO_COMPAT_VERSION}-core 
+z|https://mirror.archlinux32.org/pentium4/extra/extra.db.tar.gz|Packages-${DISTRO_BINARY_COMPAT}-${DISTRO_COMPAT_VERSION}-extra
+z|https://mirror.archlinux32.org/pentium4/community/community.db.tar.gz|Packages-${DISTRO_BINARY_COMPAT}-${DISTRO_COMPAT_VERSION}-community
+"
+#arch repos...
+#note, the local pkgs database file (or partname) is also appended to these entries, so know which url to download a particular pkg from (glob wildcard allowed)...
+
+REPOS_DISTRO_COMPAT="
+z|https://mirror.archlinux32.org/|Packages-${DISTRO_BINARY_COMPAT}-${DISTRO_COMPAT_VERSION}-*
+"
+
+#---------------
+# fix variables
+#---------------
+PKG_DOCS_DISTRO_COMPAT="$(echo "$PKG_DOCS_DISTRO_COMPAT" | sed '/^$/d' | tr '\n' ' ' | sed 's% $%%')"
+REPOS_DISTRO_COMPAT="$(echo "$REPOS_DISTRO_COMPAT" | sed '/^$/d' | tr '\n' ' ' | sed 's% $%%')"

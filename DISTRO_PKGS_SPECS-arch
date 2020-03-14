@@ -1,0 +1,421 @@
+PKGS_SPECS_TABLE='
+yes|a52dec|a52dec|exe,dev,doc,nls
+yes|abiword||exe,dev,doc,nls| 								#+wv,+fribidi,+goffice,+enchant,+gail
+yes|acl|acl|exe,dev,doc,nls
+yes|alsaequal||exe,dev,doc,nls
+yes|alsa-lib|alsa-lib|exe,dev,doc,nls
+yes|alsa-utils|alsa-utils|exe,dev,doc,nls
+yes|apulse||exe												# .pet from .debian
+yes|aspell|aspell|exe,dev,doc,nls
+yes|atk|atk,atkmm|exe,dev,doc,nls
+yes|attr|attr|exe,dev,doc,nls
+yes|audiofile|audiofile|exe,dev,doc,nls
+yes|audit|audit|exe,dev,doc,nls
+yes|autoconf|autoconf|exe>dev,dev,doc,nls
+yes|automake|automake|exe>dev,dev,doc,nls
+yes|avahi|avahi|exe,dev,doc,nls
+yes|bash-arch|bash|exe,dev,doc,nls
+yes|bc|bc|exe,dev>null,doc,nls
+yes|bcrypt||exe
+yes|bdb|db|exe,dev,doc,nls
+yes|bin86|bin86|exe>dev,dev,doc,nls
+yes|binutils|binutils|exe>dev,dev,doc,nls
+yes|bison|bison|exe>dev,dev,doc,nls
+yes|busybox|busybox|exe,dev>null,doc,nls					# arch version - package template needed
+yes|bzip2|bzip2|exe,dev,doc,nls
+yes|cairo|cairo,cairomm|exe,dev,doc,nls
+yes|caps||exe
+yes|cdrtools|cdrtools|exe,dev,doc,nls
+yes|cdparanoia|cdparanoia|exe,dev,doc,nls
+yes|cmake|cmake|exe>dev,dev,doc,nls
+yes|coreutils|coreutils|exe,dev>null,doc,nls
+yes|cpio|cpio|exe,dev>null,doc,nls
+yes|cpu-scaling-ondemand||exe
+yes|cups|cups,libcups,libpaper|exe,dev,doc>exe,nls
+yes|cups-filters|cups-filters|exe,dev,doc,nls
+yes|curl|curl|exe,dev,doc,nls
+yes|cvs|cvs|exe>dev,dev,doc,nls
+yes|cyrus-sasl2|cyrus-sasl,libsasl|exe,dev,doc,nls
+yes|dbus-glib|dbus-glib|exe,dev,doc,nls|+dbus
+yes|dbus||exe,dev,doc,nls									# slackware current
+yes|dejavu_fonts|ttf-dejavu|exe,dev,doc,nls
+yes|desk_icon_theme_blue_moon_Slacko||exe
+yes|desk_icon_theme_stardust||exe
+yes|desk_icon_theme_zabuton||exe
+yes|desktop-file-utils|desktop-file-utils|exe,dev,doc,nls|	# supposed to be needed by seamonkey and mplayer.
+yes|dhcpcd|dhcpcd|exe,dev,doc,nls
+yes|dialog|dialog|exe,dev>null,doc,nls
+yes|dictd||exe
+yes|didiwiki||exe
+yes|diffstat|diffstat|exe,dev>null,doc,nls
+yes|diffutils|diffutils|exe,dev>null,doc,nls
+yes|disktype||exe,dev>null,doc,nls
+yes|dmidecode|dmidecode|exe,dev>null,doc,nls
+yes|dosfstools|dosfstools|exe,dev>null,doc,nls
+yes|dpkg-deb||exe,dev>null,doc,nls
+yes|dvdauthor|dvdauthor|exe,dev,doc,nls 					# ponce
+yes|dvd+rwtools|dvd+rw-tools|exe,dev,doc,nls
+yes|e2fsprogs|e2fsprogs|exe,dev,doc,nls
+yes|ed|ed|exe,dev>null,doc,nls
+yes|elfutils|elfutils,libelf|exe,dev,doc,nls
+yes|enca|enca,recode|exe,dev,doc,nls| 						#needed by libass, mplayer.
+yes|enchant||exe,dev,doc,nls
+yes|esound||exe,dev,doc,nls
+yes|ethtool|ethtool|exe,dev>null,doc,nls
+yes|eudev||exe,dev,doc,nls									# txz slackware
+yes|evince||exe,dev>null,doc,nls
+yes|exiv2|exiv2|exe,dev,doc,nls
+yes|expat|expat|exe,dev,doc,nls
+yes|faac|faac|exe,dev,doc,nls
+yes|faad2|faad2|exe,dev,doc,nls
+yes|ffmpeg||exe,dev,doc,nls| #deps: +alsa-lib,+bzip2,+fontconfig,+gsm,+lame,+libass,+libbluray,+libmodplug,+libpulse,+libtheora,+libva,+libvorbis,+libvpx,+opencore-amr,+openjpeg,+opus,+rtmpdump,+schroedinger,+sdl,+speex,+v4l-utils,+x264,+xvidcore,+zlib
+yes|file|file|exe,dev,doc,nls
+yes|findutils|findutils|exe,dev>null,doc,nls
+yes|firewallstatus||exe,dev
+yes|flac|flac|exe,dev,doc,nls
+yes|flex|flex|exe>dev,dev,doc,nls
+yes|fpm2||exe
+yes|freememapplet||exe
+yes|freetype|freetype2|exe,dev,doc,nls
+yes|fribidi|fribidi|exe,dev,doc,nls
+yes|fuse2|fuse2|exe,dev,doc,nls
+yes|gamin||exe,dev,doc,nls									# txz from slackware
+yes|gawk|gawk|exe,dev,doc,nls
+yes|gc|gc|exe,dev,doc,nls
+yes|gcc_dev|gcc,gcc-go,gmp,elfutils,libmpc|exe>dev,dev,doc,nls
+yes|gcc_lib|gcc-libs|exe,dev>null,doc>null,nls>null
+yes|gcolor2||exe
+yes|gd|gd|exe,dev,doc,nls
+yes|gdb|gdb|exe>dev,dev,doc,nls
+yes|gdbm|gdbm|exe,dev,doc,nls
+yes|gdk-pixbuf|gdk-pixbuf2|exe,dev,doc,nls
+yes|gdmap||exe,dev>null,doc,nls
+yes|geany||exe,dev>null,doc,nls
+yes|getcurpos||exe
+yes|gettext|gettext|exe,dev>null,doc>null,nls>null
+yes|gettext-tools|gettext|exe>dev,dev,doc,nls
+yes|gexec||exe,dev>null,doc,nls
+yes|gftp|gftp|exe,dev>null,doc,nls
+yes|ghostscript|ghostscript,ijs,jbig2dec|exe,dev,doc,nls
+yes|gifsicle||exe
+yes|glibc_dev|glibc|exe>dev,dev,doc,nls
+yes|glibc-arch|glibc,tzdata|exe,dev,doc,nls
+yes|glibc_locales|glibc|exe,dev,doc,nls>exe
+yes|glib|glib2,glibmm|exe,dev,doc,nls
+yes|gmeasures||exe,dev>null,doc,nls
+yes|gmp|gmp|exe,dev,doc,nls
+yes|gnome-menus||exe,dev,doc,nls|							# needed by puppy-xdg binary utilities.
+yes|gnome-mplayer||exe,dev,doc,nls
+yes|gnumeric||exe,dev>null,doc,nls
+yes|gnutls|gnutls,nettle,p11-kit|exe,dev,doc,nls|
+yes|goffice||exe,dev,doc,nls
+yes|gparted||exe,dev,doc,nls								# deb from debian
+yes|gphoto2|gphoto2|exe,dev,doc,nls
+yes|gphotofs||exe,dev,doc,nls
+yes|gpm|gpm|exe,dev>null,doc,nls| 							#needed by aalib, which is needed by mplayer.
+yes|graphite|graphite|exe,dev,doc,nls| 						#needed by harfbuzz.
+yes|grep|grep|exe,dev>null,doc,nls
+yes|groff|groff|exe>dev,dev,doc,nls
+yes|grub2_efi||exe
+yes|grub4dos||exe
+yes|gsm|gsm|exe,dev,doc,nls| 								#needed by ffmpeg.
+yes|gtkdialog||exe,dev,doc>dev
+yes|gtk+|gtk2,gtkmm|exe,dev,doc,nls
+no|gtk3|gtk3,gtkmm3,at-spi2-atk,at-spi2-core|exe,dev,doc,nls
+yes|gtksourceview|gtksourceview2|exe,dev,doc,nls
+yes|gtk_theme_flat_grey_rounded||exe
+yes|gtk_theme_gradient_grey||exe
+yes|gtk_theme_rockstar||exe
+yes|gtk_theme_ShallowThought||exe
+yes|gtk-update-icon-cache|gtk-update-icon-cache|exe,dev,doc,nls| #strange, they have removed this from gtk2 pkg.
+yes|guile|guile|exe,dev,doc,nls
+yes|gutenprint|gutenprint|exe,dev,doc,nls
+yes|gxmessage||exe,dev,doc,nls| 							#use my pet, as has xmessage symlink to gxmessage.
+yes|gzip|gzip|exe,dev>null,doc,nls
+yes|hardinfo||exe,dev,doc,nls|
+yes|harfbuzz|harfbuzz|exe,dev,doc,nls| 						#needed by gtk.
+yes|hdparm|hdparm|exe,dev>null,doc,nls
+yes|hiawatha||exe
+yes|hicolor-icon-theme|hicolor-icon-theme|exe,dev>null,doc,nls
+yes|homebank||exe,dev>null,doc,nls
+yes|hotplug2stdout||exe
+yes|htop|htop|exe,dev
+yes|hunspell-en-us||exe
+yes|hunspell||exe,dev,doc,nls
+yes|icu|icu|exe,dev,doc,nls| 								#needed by harfbuzz. warning, enormous.
+yes|imake|imake|exe>dev,dev,doc,nls
+yes|inkscapelite||exe
+yes|inotify-tools|inotify-tools|exe,dev,doc,nls
+yes|installwatch||exe
+yes|intltool|intltool|exe>dev,dev,doc,nls
+yes|iptables|iptables,libnfnetlink,libmnl,libnftnl,libnetfilter_conntrack|exe,dev,doc,nls
+yes|isomaster||exe,dev,doc,nls
+yes|jasper|jasper|exe,dev,doc,nls
+yes|jwm||exe,dev,doc,nls
+yes|keyutils|keyutils|exe,dev,doc,nls
+yes|kmod|kmod|exe,dev,doc,nls
+yes|krb5|krb5|exe,dev,doc,nls
+yes|lame|lame|exe,dev,doc,nls
+yes|lcms2|lcms2|exe,dev,doc,nls
+yes|leafpad||exe,dev>null,doc,nls
+yes|less|less|exe,dev>null,doc,nls
+yes|libao|libao|exe,dev,doc,nls
+yes|libart|libart-lgpl|exe,dev,doc,nls
+yes|libass|libass|exe,dev,doc,nls| 							#needed by ffmpeg.
+yes|libbluray|libbluray|exe,dev,doc,nls| 					#needed by ffmpeg.
+yes|libcap|libcap|exe,dev,doc,nls
+yes|libcap-ng|libcap-ng|exe,dev,doc,nls
+yes|libcddb|libcddb|exe,dev,doc,nls
+yes|libcdio|libcdio|exe,dev,doc,nls
+yes|libcdio-paranoia|libcdio-paranoia|exe,dev,doc,nls
+yes|libconfig|libconfig|exe,dev,doc,nls
+yes|libcroco|libcroco|exe,dev,doc,nls
+yes|libdaemon|libdaemon|exe,dev,doc,nls
+yes|libdatrie|libdatrie|exe,dev,doc,nls| 					#needed by libthai.
+yes|libdca|libdca|exe,dev,doc,nls| 							#needed by mplayer.
+yes|libdc1394||exe,dev,doc,nls
+yes|libdv|libdv|exe,dev,doc,nls
+yes|libdvdcss||exe,dev,doc,nls
+yes|libdvdnav||exe,dev,doc,nls
+yes|libdvdplay||exe,dev,doc,nls
+yes|libdvdread|libdvdread|exe,dev,doc,nls
+yes|libedit|libedit|exe,dev,doc,nls
+yes|libepoxy|libepoxy|exe,dev,doc,nls
+yes|libevdev|libevdev|exe,dev,doc,nls
+yes|libevent|libevent|exe,dev,doc,nls| 						#needed by seamonkey.
+yes|libexif|libexif|exe,dev,doc,nls
+yes|libffi|libffi|exe,dev,doc,nls
+yes|libgcrypt|libgcrypt|exe,dev,doc,nls|+libgpg-error,+texinfo
+yes|libgee|libgee|exe,dev,doc,nls
+yes|libgif|giflib|exe,dev,doc,nls
+yes|libglade2|libglade|exe,dev,doc,nls
+yes|libgnomecanvas||exe,dev,doc,nls
+yes|libgpg-error|libgpg-error|exe,dev,doc,nls
+yes|libgphoto2|libgphoto2|exe,dev,doc,nls
+yes|libgsf|libgsf|exe,dev,doc,nls
+yes|libgtkhtml||exe,dev,doc,nls
+yes|libgudev|libgudev|exe,dev,doc,nls
+yes|libical|libical|exe,dev,doc,nls
+yes|libid3tag|libid3tag|exe,dev,doc,nls
+yes|libidl|libidl2|exe,dev,doc,nls
+yes|libidn|libidn|exe,dev,doc,nls
+yes|libidn2|libidn2|exe,dev,doc,nls
+yes|libieee1284|libieee1284|exe,dev,doc,nls
+yes|libjpeg|libjpeg-turbo|exe,dev,doc,nls
+yes|libjpeg6|libjpeg6-turbo|exe,dev,doc,nls
+yes|libltdl|libtool|exe,dev>null,doc>null,nls>null
+yes|libmad|libmad|exe,dev,doc,nls
+yes|libmng|libmng|exe,dev,doc,nls
+yes|libmodplug|libmodplug|exe,dev,doc,nls| 					#needed by ffmpeg.
+yes|libnghttp2|libnghttp2|exe,dev,doc,nls
+yes|libnl|libnl|exe,dev,doc,nls
+yes|libnotify|libnotify|exe,dev,doc,nls| 					#needed by seamonkey.
+yes|libogg|libogg|exe,dev,doc,nls
+yes|libpcap|libpcap|exe,dev,doc,nls
+yes|libpciaccess|libpciaccess|exe,dev,doc,nls
+yes|libpng|libpng|exe,dev,doc,nls
+yes|libpulse|libpulse,libasyncns,json-c|exe,dev,doc,nls| 	#needed by ffmpeg, mplayer.
+yes|libraw1394|libraw1394|exe,dev,doc,nls
+yes|librsvg|librsvg|exe,dev,doc,nls|
+yes|libsamplerate|libsamplerate|exe,dev,doc,nls
+yes|libsigc++|libsigc++|exe,dev,doc,nls
+yes|libsndfile|libsndfile|exe,dev,doc,nls
+yes|libsoup|libsoup,brotli,libpsl|exe,dev,doc,nls			# libpsl added 221118
+yes|libssh2|libssh2|exe,dev,doc,nls
+yes|libtasn1|libtasn1|exe,dev,doc,nls|
+yes|libthai|libthai|exe,dev,doc,nls| 						#needed by gtk.
+yes|libtheora|libtheora|exe,dev,doc,nls
+yes|libtiff|libtiff|exe,dev,doc,nls
+yes|libtirpc|libtirpc|exe,dev,doc,nls
+yes|libtool|libtool|exe>dev,dev,doc,nls
+yes|libunistring|libunistring|exe,dev,doc,nls
+yes|libusb1|libusb|exe,dev,doc,nls
+yes|libusb-compat|libusb-compat|exe,dev,doc,nls
+yes|libva|libva|exe,dev,doc,nls| 							#needed by ffmpeg.
+yes|libvdpau|libvdpau|exe,dev,doc,nls| 						#needed by mesa.
+yes|libvorbis|libvorbis|exe,dev,doc,nls
+yes|libvpx|libvpx|exe,dev,doc,nls| 							#needed by seamonkey.
+yes|libwebp|libwebp|exe,dev,doc,nls
+yes|libx86|libx86|exe,dev,doc,nls
+yes|libxcb_base|libxcb|exe,dev,doc,nls
+yes|libxml2|libxml2|exe,dev,doc,nls
+yes|libxshmfence|libxshmfence|exe,dev,doc,nls
+yes|libxslt|libxslt|exe,dev,doc,nls
+yes|linux_firewall||exe
+yes|linux_firmware_dvb||exe
+no|linux-header|linux-headers|exe>dev,dev,doc,nls
+yes|llvm-cut|llvm-libs|exe,dev>null,doc,nls
+yes|lvm2|lvm2,libaio,device-mapper|exe,dev,doc,nls
+yes|lxtask|lxtask|exe,dev,doc,nls
+yes|lxterminal||exe,dev,doc,nls								# txv ponce
+yes|lzo|lzo|exe,dev,doc,nls
+yes|lz4|lz4|exe,dev,doc,nls
+yes|m4|m4|exe>dev,dev,doc,nls
+yes|make|make|exe>dev,dev,doc,nls
+no|man-pages|man-pages|exe>dev,dev,doc,nls
+yes|mesa|mesa,libglvnd,libomxil-bellagio,freeglut,glew,glu,lm_sensors,rrdtool|exe,dev,doc,nls
+yes|mhwaveedit||exe
+yes|mirdir||exe
+no|mozilla-common|mozilla-common|exe,dev,doc,nls| 			#supposed to be needed by seamonkey.
+yes|mpfr|mpfr|exe,dev,doc,nls
+yes|MPlayer||exe,dev,doc
+yes|ms-sys||exe
+yes|mtdev|mtdev|exe,dev,doc,nls| 							#needed by xf86-input-synaptics.
+yes|mtpaint||exe,dev,doc,nls
+yes|mtr|mtr|exe
+yes|nasm|nasm|exe>dev,dev,doc,nls
+yes|nbtscan||exe
+yes|ncurses|ncurses|exe,dev,doc,nls
+yes|nenscript||exe
+yes|neon|neon|exe>dev,dev,doc,nls
+yes|netmon_wce||exe,dev,doc,nls
+yes|netpbm|netpbm|exe,dev,doc,nls
+yes|net-tools|net-tools|exe,dev,doc,nls
+yes|network_roxapp||exe
+yes|notecase||exe,dev,doc,nls
+yes|nspr|nspr|exe,dev,doc,nls
+yes|nss|nss|exe,dev,doc,nls| 								#needed by seamonkey.
+yes|ntfs-3g|ntfs-3g|exe,dev,doc,nls
+yes|numlockx||exe| 											#needed by shinobars firstrun.
+yes|openal-soft||exe,dev
+yes|opencore-amr|opencore-amr|exe,dev,doc,nls| 				#needed by ffmpeg.
+yes|openjpeg2|openjpeg2|exe,dev,doc,nls| 					#needed by ffmpeg.
+yes|openldap|openldap,libldap,unixodbc|exe,dev,doc,nls
+yes|openssh_client|openssh,ldns|exe,dev,doc,nls
+yes|openssl|openssl|exe,dev,doc,nls
+yes|opus|opus|exe,dev,doc,nls| 								#needed by ffmpeg.
+yes|orc|orc|exe,dev,doc,nls
+yes|osmo||exe
+yes|pam|pam,cracklib|exe,dev,doc,nls
+yes|pango|pango,pangomm|exe,dev,doc,nls
+yes|parcellite||exe,dev
+yes|parted|parted|exe,dev,doc,nls
+yes|patch|patch|exe>dev,dev,doc,nls
+yes|pavrecord||exe
+yes|pawdioconverter||exe
+yes|pburn||exe
+no|pcd||exe
+no|pcdripper||exe
+yes|pciutils|pciutils|exe,dev,doc,nls
+yes|pcmciautils|pcmciautils|exe,dev,doc,nls
+yes|pcre|pcre|exe,dev,doc,nls
+yes|pcre2|pcre2|exe,dev,doc,nls
+yes|pctorrent||exe
+yes|pdvdrsab||exe
+yes|pequalizer||exe| 										#audio equalizer, used by pmusic. note, deps are alsaequal, caps_eq.
+yes|perl-digest-sha1_devxonly|perl-digest-sha1|exe>dev,dev,doc,nls
+yes|perl-digest-sha1|perl-digest-sha1|exe,dev>null,doc>null,nls>null
+yes|perl-extutils-depends|perl-extutils-depends|exe>dev,dev,doc,nls
+yes|perl-extutils-pkgconfig|perl-extutils-pkgconfig|exe>dev,dev,doc,nls
+yes|perl-html-parser_devxonly|perl-html-parser|exe>dev,dev,doc,nls
+yes|perl-html-parser|perl-html-parser|exe,dev>null,doc>null,nls>null
+yes|perl|perl|exe>dev,dev,doc,nls
+yes|perl_tiny|perl|exe,dev>null,doc>null,nls>null
+yes|perl-uri|perl-uri|exe>dev,dev,doc,nls
+yes|perl-xml-simple|perl-xml-simple|exe>dev,dev,doc,nls
+yes|pixman|pixman|exe,dev,doc,nls
+yes|pkgconf|pkgconf|exe>dev,dev,doc,nls
+yes|pmetatagger||exe
+yes|pmirrorget||exe
+yes|pnethood||exe
+yes|polkit|polkit|exe,dev,doc,nls
+yes|poppler|poppler,poppler-glib|exe,dev,doc,nls
+yes|popt|popt|exe,dev,doc,nls
+yes|powerapplet_tray||exe
+no|pplog||exe
+yes|ppp|ppp|exe,dev>null,doc,nls
+no|pprocess||exe
+yes|prename||exe
+yes|procps-ng|procps-ng|exe
+yes|psynclient||exe
+yes|PupClockset||exe
+yes|PupControl||exe
+yes|Pup-Kview||exe
+yes|pupmd5sum||exe
+yes|PupMenu||exe
+yes|Pup-SysInfo||exe
+yes|pure-ftpd||exe
+yes|pwsget||exe
+yes|python|python|exe>dev,dev,doc,nls
+yes|qpdf|qpdf|exe,dev,doc,nls| 								#needed for cups
+no|radeon_firmware||exe,dev,doc,nls
+yes|readline|readline|exe,dev,doc,nls
+yes|retrovol||exe,dev,doc,nls
+yes|rox-filer||exe
+yes|rsync_devxonly|rsync|exe>dev,dev,doc,nls
+yes|rsync|rsync|exe,dev>null,doc>null,nls>null
+yes|rtmpdump||exe,dev,doc,nls
+yes|rubix||exe
+yes|rxvt-unicode||exe,dev>null,doc,nls
+yes|samba||exe,dev,doc
+yes|sane-backends|sane|exe,dev,doc,nls
+yes|schroedinger||exe,dev,doc,nls| 							#needed by ffmpeg.
+yes|sdl|sdl|exe,dev,doc,nls| 								#needed by ffmpeg.
+yes|sed|sed|exe,dev>null,doc,nls
+yes|shared-mime-info||exe,dev,doc,nls
+yes|speex|speex,speexdsp|exe,dev,doc,nls| 					#needed by ffmpeg.
+yes|squashfs-tools|squashfs-tools|exe,dev
+yes|sqlite|sqlite|exe,dev,doc,nls
+no|ssl-certificate-fix||exe,dev,doc,nls|pet:noarch| 		#qtweb needs this.
+yes|startup-notification|startup-notification|exe,dev,doc,nls
+yes|strace|strace|exe>dev,dev,doc,nls
+yes|streamripper||exe,dev,doc,nls
+yes|subversion|subversion|exe>dev,dev,doc,nls
+yes|svgalib||exe,dev,doc									# from slackware
+yes|sylpheed||exe
+yes|sysfsutils|sysfsutils|exe,dev,doc,nls
+yes|sys-info||exe,dev,doc,nls
+yes|syslinux||exe
+yes|systemd-libs|systemd-libs|exe,dev,doc,nls
+yes|tar|tar|exe,dev>null,doc,nls
+yes|tas||exe,nls
+yes|texinfo|texinfo|exe>dev,dev,doc,nls
+yes|time|time|exe,dev>null,doc,nls
+yes|unrar||exe,dev,doc,nls
+yes|unzip|unzip|exe,dev,doc,nls
+yes|urxvtset||exe| 											#needs urxvt, yad
+yes|usb-modeswitch-data||exe
+yes|usb-modeswitch||exe
+yes|usbutils|usbutils|exe,dev,doc,nls
+yes|util-linux|util-linux,libutil-linux|exe,dev,doc,nls
+yes|v4l-utils|v4l-utils|exe,dev,doc,nls| 					#needed by ffmpeg.
+yes|vamps||exe,dev,doc,nls
+yes|viewnior|viewnior|exe,dev,doc,nls
+yes|vobcopy||exe,dev,doc,nls
+no|vorbis-tools|vorbis-tools|exe,dev,doc,nls
+yes|vte||exe,dev,doc,nls									# REVERTED .txz
+yes|wayland|wayland|exe,dev,doc,nls| 						#mesa needs this.
+yes|wget|wget|exe,dev>null,doc,nls
+yes|wireless-tools|wireless_tools|exe,dev,doc,nls
+yes|wpa_supplicant|wpa_supplicant|exe,dev>null,doc,nls
+yes|wvdial||exe
+yes|wv||exe,dev,doc,nls
+yes|wvstreams||exe,dev,doc,nls
+no|x11proto|xcmiscproto,compositeproto,fontsproto,printproto,renderproto,xf86dgaproto,xproto,dmxproto,glproto,xcb-proto,bigreqsproto,randrproto,xf86vidmodeproto,resourceproto,xineramaproto,scrnsaverproto,kbproto,videoproto,fixesproto,inputproto,xextproto,xf86driproto,damageproto,recordproto|exe>dev,dev,doc,nls
+yes|xorgproto|xorgproto|exe>dev,dev,doc,nls
+yes|x264|x264|exe,dev,doc,nls| 								#needed by ffmpeg.
+yes|x265|x265|exe,dev,doc,nls| 								#needed by ffmpeg.
+yes|xarchive||exe,dev>null,doc,nls
+yes|xcb-util|xcb-util|exe,dev,doc,nls
+yes|xclip||exe
+yes|xcur2png|xcur2png|exe
+yes|xdelta||exe
+yes|xdg_puppy_jwm||exe
+yes|Xdialog||exe,dev,doc,nls
+yes|xlock_gui||exe
+yes|xlockmore||exe
+no|xorg_base|xorg-xinit,xorg-xauth,fontconfig,libdrm,libfontenc,xkbcomp,xkeyboard-config|exe,dev,doc,nls
+yes|xorg_base_new|xorg-appres,xorg-bdftopcf,xbitmaps,fontconfig,xorg-iceauth,mtdev,xorg-setxkbmap,xorg-smproxy,xorg-x11perf,xorg-xauth,xorg-xbacklight,xorg-xbiff,xorg-xclipboard,xorg-xclock,xorg-xconsole,xorg-xcursorgen,xorg-xdpyinfo,xorg-xdriinfo,xorg-xev,xorg-xfontsel,xorg-xgamma,xorg-xhost,xorg-xinit,xorg-xkbcomp,xorg-xkbutils,xorg-xkill,xorg-xload,xorg-xmag,xorg-xmessage,xorg-xmodmap,xorg-xprop,xorg-xrandr,xorg-xrdb,xorg-xrefresh,xorg-xset,xorg-xsetroot,xorg-xvidtune,xorg-xvinfo,xorg-xwd,xorg-xwininfo,libdrm,libfontenc,libice,libsm,libx11,libxau,libxaw,libxcomposite,libxcursor,libxdamage,libxdmcp,libxext,libxfixes,libxfont2,libxft,libxi,libxinerama,libxkbcommon,libxkbfile,libxmu,libxp,libxpm,libxrandr,libxrender,libxres,libxt,libxtst,libxv,libxvmc,libxxf86vm,libxss,xorg-xinput,xkeyboard-config,xbitmaps|exe,dev,doc,nls
+yes|xsane|xsane|exe,dev>null,doc,nls
+yes|xserver_xorg|xorg-server,xf86-video-*,xf86-input-*,libinput,libwacom,-xf86-video-dummy,-xf86-video-glint,-xf86-video-nsc,-xf86-video-radeonhd,-xf86-video-tga,-xf86-video-vga|exe,dev,doc,nls
+yes|xsoldier||exe
+yes|xtrans|xtrans|exe>dev,dev,doc,nls
+yes|xvidcore|xvidcore|exe,dev,doc,nls| 						#needed by ffmpeg.
+yes|xz|xz|exe,dev,doc,nls
+yes|yad||exe,dev,doc,nls
+yes|yasm|yasm|exe>dev,dev,doc,nls
+yes|zip|zip|exe,dev>null,doc,nls
+yes|zlib|zlib|exe,dev,doc,nls
+yes|zstd|zstd|exe,dev,doc,nls
+yes|00_apup32_fix||exe
+'

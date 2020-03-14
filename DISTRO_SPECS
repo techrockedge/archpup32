@@ -1,0 +1,18 @@
+#One or more words that identify this distribution:
+DISTRO_NAME='Arch32Pup'
+#version number of this distribution:
+DISTRO_VERSION=20.03
+#The distro whose binary packages were used to build this distribution:
+DISTRO_BINARY_COMPAT='arch'
+#Prefix for some filenames: exs: a32pupsave.2fs, puppy_a32pup-20.03.sfs
+DISTRO_FILE_PREFIX='a32pup'
+#The version of the distro whose binary packages were used to build this distro:
+DISTRO_COMPAT_VERSION='32'
+#the kernel pet package used:
+DISTRO_KERNEL_PET='Huge_Kernel'
+DISTRO_XORG_AUTO='yes'
+DISTRO_DB_SUBNAME='slacko14.2'
+WOOF_VERSION=9
+DISTRO_TARGETARCH='x86'
+NO_MULTIARCH_SYMLINK=1
+BUILD_FROM_WOOF='testing;fbe454968;2020-03-10 15:25:12 +1000'

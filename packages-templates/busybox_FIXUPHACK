@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#arch
+mkdir -p ./bin
+mv usr/bin/* ./bin
+rm -rf usr/bin
+
+cp ../00_apup32_fix/bin/busybox.lst ./bin

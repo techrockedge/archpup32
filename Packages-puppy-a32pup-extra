@@ -1,0 +1,25 @@
+00_apup32_fix|00_apup32_fix|||System|3028K||00_apup32_fix.pet||Manage running processes|slackware|current||
+apulse-0.1.12-2_i386_debian|apulse|0.1.12-2_i386_debian||BuildingBlock|200K||apulse-0.1.12-2_i386_debian.pet||no description provided|slackware|current||
+dbus-1.12.16|dbus|1.12.16|1|System|1810K|slackware/a|dbus-1.12.16-i586-1.txz||D-Bus message bus system|slackware|current||
+esound-0.2.41|esound|0.2.41|3|BuildingBlock|360K|lxpup|esound-0.2.41-i586-3.txz||Enlightened Sound Daemon|slackware|current||
+eudev-3.2.9|eudev|3.2.9|1|System|8090K|lxpup|eudev-3.2.9-i586-1.txz||dynamic device directory system|slackware|current||
+evince-2.32.0-i686|evince|2.32.0-i686||Document|1540K||evince-2.32.0-i686.pet||View multi-page documents||||
+evince_NLS-2.32.0-i686|evince_NLS|2.32.0-i686||BuildingBlock|3064K||evince_NLS-2.32.0-i686.pet||no description provided||||
+ffmpeg_DEV-4.2.2-i686_a32_2002|ffmpeg_DEV|4.2.2-i686_a32_2002||Multimedia|23896||ffmpeg_DEV-4.2.2-i686_a32_2002.pet|+ffmpeg|ffmpeg development|arch|32||
+ffmpeg_DOC-4.2.2-i686_a32_2002|ffmpeg_DOC|4.2.2-i686_a32_2002||Multimedia|9644||ffmpeg_DOC-4.2.2-i686_a32_2002.pet|+ffmpeg|ffmpeg documentation||||
+ffmpeg-4.2.2-i686_a32_2002|ffmpeg|4.2.2-i686_a32_2002||Multimedia|16228||ffmpeg-4.2.2-i686_a32_2002.pet|+sdl,+x264,+speex,+libogg,+libvorbis,+faac,+libvpx,+schroedinger,+libtheora,+lame|FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything|arch|32||
+gamin-0.1.10|gamin|0.1.10|6|BuildingBlock|470K|lxpup|gamin-0.1.10-i586-6.txz||A minimalist FAM replacement||||
+goffice-0.8.17|goffice|0.8.17||BuildingBlock|3420K||goffice-0.8.17.pet||no description provided||||
+gparted_0.32.0-2|gparted|0.32.0-2||Utility|7465K|lxpup|gparted_0.32.0-2_i386.deb||GNOME partition editor|debian|buster|
+jwm-2.3.7|jwm|2.3.7|3_i386|BuildingBlock|100K||jwm-2.3.7-3_i386.deb||JWM Window Manager||||
+lxterminal-0.3.2|lxterminal|0.3.2|1ponce|Utility;shell|530K|.|lxterminal-0.3.2-i586-1ponce.txz||LXDE terminal emulator|slackware|current||
+MPlayer-1.4-i686_sc1904|MPlayer|1.4-i686_sc1904||Multimedia|16504||MPlayer-1.4-i686_sc1904.pet|+ffmpeg|Media player for audio and video||||
+MPlayer_DEV-1.4-i686_sc1904|MPlayer_DEV|1.4-i686_sc1904||Multimedia|20||MPlayer_DEV-1.4-i686_sc1904.pet|+MPlayer|MPlayer development||||
+MPlayer_DOC-1.4-i686_sc1904|MPlayer_DOC|1.4-i686_sc1904||Multimedia|360||MPlayer_DOC-1.4-i686_sc1904.pet|+MPlayer|MPlayer documentation||||
+retrovol_NLS-0.14.3.2-X|retrovol_NLS|0.14.3.2-X||Multimedia|52K||retrovol_NLS-0.14.3.2-X.pet||no description provided||||
+retrovol-0.14.3.2-X|retrovol|0.14.3.2-X||Multimedia|184K||retrovol-0.14.3.2-X.pet||no description provided||||
+samba-4.10.2-i686_sc1904|samba|4.10.2-i686_sc1904||Network|32356||samba-4.10.2-i686_sc1904.pet||share files with M.S. Windows|slackware|current||
+samba_DEV-4.10.2-i686_sc1904|samba_DEV|4.10.2-i686_sc1904||Network|2480||samba_DEV-4.10.2-i686_sc1904.pet|+samba|samba development|slackware|current||
+samba_DOC-4.10.2-i686_sc1904|samba_DOC|4.10.2-i686_sc1904||Network|84||samba_DOC-4.10.2-i686_sc1904.pet|+samba|samba documentation||||
+svgalib-1.9.25|svgalib|1.9.25|4|BuildingBlock|1700K|slackware/l|svgalib-1.9.25-i586-4.txz||A low level graphics library for Linux|slackware|current||
+vte-0.28.2|vte|0.28.2|5|Utility;shell|1880K|lxpup|vte-0.28.2-i586-5.txz||terminal emulator widget|slackware|current||
