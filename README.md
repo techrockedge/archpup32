@@ -15,18 +15,18 @@ Go to the resulting woof-CE folder and run in a terminal:
   ./merge2out
 
 with parameters:
--2 (x86)
--2 (slackware)
--3 (14.2)
+- 2 (x86)
+- 2 (slackware)
+- 3 (14.2)
 
 **Step #2 Patching merg2out output**
 
 Go up a level and rename the woof-out_x86_x86_slackware_14.2 folder to something shorter like woof-out_arch32
 
 Delete the following from woof-out_arch32
--packages-pet
--packages-tgz_txz-14.2
--DISTRO_PKGS_SPECS-slackware-14.2
+- packages-pet
+- packages-tgz_txz-14.2
+- DISTRO_PKGS_SPECS-slackware-14.2
 
 **Step #2A (Option - A) - Use a Tarball to replace/add key files**
 
