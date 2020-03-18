@@ -14,7 +14,7 @@ fi
 
 WGET='wget --no-check-certificate -q --show-progress'
 
-rm Packages-puppy-slacko14.2-official Packages-puppy-noarch-official Packages-puppy-common32-official
+#rm Packages-puppy-slacko14.2-official Packages-puppy-noarch-official Packages-puppy-common32-official
 $WGET https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/woof-distro/x86/slackware/14.2/Packages-puppy-slacko14.2-official
 $WGET https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/woof-distro/Packages-puppy-noarch-official
 $WGET https://raw.githubusercontent.com/puppylinux-woof-CE/woof-CE/testing/woof-distro/x86/Packages-puppy-common32-official
@@ -26,7 +26,7 @@ echo "Processing ArchLinux32 ${arepo} repo please wait..."
 rm -rf sandbox0 2>/dev/null
 mkdir sandbox0
 cd sandbox0
-tar xzf "../${arepo}.db.tar.gz"
+busybox tar xzf "../${arepo}.db.tar.gz"
 RETSTAT=$?
 cd ..
 
@@ -39,7 +39,9 @@ if [ $RETSTAT -eq 0 ];then
    if(filename == "") return;
    
    printf("%s-%s|%s|%s|%s||%0.fK|pentium4/%s|%s|%s|%s||||\n", pkgname, pkgverarr[1], pkgname, pkgverarr[1], pkgverarr[2], pkgsize, pkgpath, filename, pkgdeps, pkgdesc)
+   printf("%s-%s|%s|%s|%s|%s|%s|%s|\n", pkgname, pkgverarr[1], pkgname, pkgverarr[1], pkgverarr[2],provides,mkdeps,optdeps) >> "sandbox0/archtemp2"
    pkgname=""; pkgverarr[1]=""; pkgverarr[2]=""; pkgsize=""; filename=""; pkgdeps=""; inDeps=0; pkgdesc="";
+   provides=""; mkdeps=""; optdeps="";
   }
   BEGIN{
    inDeps=0
@@ -48,17 +50,17 @@ if [ $RETSTAT -eq 0 ];then
    if($1 == ""){
     #do nothing
    }else if($1 == "%FILENAME%"){
-    inDeps=0
+    inDeps=0; isMkDeps=0; isProvides=0; isOptDeps=0
     output()
     getline filename
    }else if($1 == "%NAME%"){
-    inDeps=0
+    inDeps=0; isMkDeps=0; isProvides=0; isOptDeps=0
     getline pkgname
    }else if($1 == "%VERSION%"){
-    inDeps=0
+    inDeps=0; isMkDeps=0; isProvides=0; isOptDeps=0
     getline pkgver; split(pkgver, pkgverarr, "-")
    }else if($1 == "%DESC%"){
-    inDeps=0
+    inDeps=0; isMkDeps=0; isProvides=0; isOptDeps=0
     getline pkgdesc
     gsub(/</, " ", pkgdesc)
     gsub(/>/, " ", pkgdesc)
@@ -71,9 +73,19 @@ if [ $RETSTAT -eq 0 ];then
     inDeps=0
     getline pkgsize; pkgsize = pkgsize / 1024
    }else if($1 == "%DEPENDS%"){
+	isMkDeps=0; isProvides=0; isOptDeps=0
     inDeps=1
+   }else if($1 == "%MAKEDEPENDS%"){
+	inDeps=0; isProvides=0; isOptDeps=0
+    isMkDeps=1
+   }else if($1 == "%PROVIDES%"){
+	inDeps=0; isMkDeps=0; isOptDeps=0
+    isProvides=1
+   }else if($1 == "%OPTDEPENDS%"){
+	inDeps=0; isMkDeps=0; isProvides=0;
+    isOptDeps=1
    }else if($1 ~ /^%/){
-    inDeps=0
+    inDeps=0; isMkDeps=0; isProvides=0; isOptDeps=0
    }else if(inDeps == 1){ # dependency
     if(pkgdeps != "") pkgdeps=pkgdeps","
     pkgdeps=pkgdeps"+"
@@ -83,7 +95,19 @@ if [ $RETSTAT -eq 0 ];then
     sub(/</, "\\&lt", $0)
     sub(/=/, "\\&eq", $0)
     pkgdeps=pkgdeps$0
-   }
+   }else if(isMkDeps == 1){ # dependency
+    if(mkdeps != "") mkdeps=mkdeps","
+    mkdeps=mkdeps"+"
+    mkdeps=mkdeps$0
+   }else if(isProvides == 1){ # dependency
+    if(provides != "") provides=provides","
+    provides=provides"+"
+    provides=provides$0
+   }else if(isOptDeps == 1){ # dependency
+    if(optdeps != "") optdeps=optdeps","
+    optdeps=optdeps"+"
+    optdeps=optdeps$0
+   } 
   }
   END{
    output();
@@ -91,6 +115,7 @@ if [ $RETSTAT -eq 0 ];then
  '  > sandbox0/archtemp
 # sed 's%$%|||%' sandbox0/archtemp > sandbox0/archtemp2
  ${FIND_CAT} sandbox0/archtemp xxx > ${RUNNINGPUP}Packages-arch-32-${arepo}
+ mv sandbox0/archtemp2 ${RUNNINGPUP}Provides-arch-32-${arepo}
 fi
 done
 rm -rf sandbox0 2>/dev/null
