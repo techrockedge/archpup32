@@ -50,7 +50,11 @@ function process_output(){
 	        cd $a_root
 		    if [ -d "$OUT_FILE_PATH" ]; then
 		      cd $a_root
-		      find . -wholename "./$a_file2" | cpio -pdu "$OUT_FILE_PATH"
+		      echo "./$a_file2" | cpio -pdu "$OUT_FILE_PATH"
+		      f_pattern=${a_file##*/}
+		      [ -z f_pattern ] && f_pattern='*'
+		      d_pattern=${a_file%%/*}
+		      [ -d "./$a_file2" ] && find ./"$d_pattern" -name "$f_pattern" | cpio -pdu "$OUT_FILE_PATH"
 		    else
 		      #a_file="${a_file%/*}"
 		      #a_file="${a_file%/}"
