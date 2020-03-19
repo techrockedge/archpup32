@@ -48,10 +48,10 @@ run the script mk_tarball.sh
 Go into woof-out_arch32
 
 In a terminal run:
-  ./0setup
-  ./1download
-  ./2createpackages
-  ./3builddistro
+  - ./0setup
+  - ./1download
+  - ./2createpackages
+  - ./3builddistro
 
 When the iso is complete go into woof-output-a32pup-20.03
 
