@@ -22,4 +22,7 @@ samba-4.10.2-i686_sc1904|samba|4.10.2-i686_sc1904||Network|32356||samba-4.10.2-i
 samba_DEV-4.10.2-i686_sc1904|samba_DEV|4.10.2-i686_sc1904||Network|2480||samba_DEV-4.10.2-i686_sc1904.pet|+samba|samba development|slackware|current||
 samba_DOC-4.10.2-i686_sc1904|samba_DOC|4.10.2-i686_sc1904||Network|84||samba_DOC-4.10.2-i686_sc1904.pet|+samba|samba documentation||||
 svgalib-1.9.25|svgalib|1.9.25|4|BuildingBlock|1700K|slackware/l|svgalib-1.9.25-i586-4.txz||A low level graphics library for Linux|slackware|current||
+sylpheed-3.7.0-i686-scpup32|sylpheed|3.7.0-i686-scpup32||Internet|2020||sylpheed-3.7.0-i686-scpup32.pet|+gtk+2,+curl|Light weight email client|slackware|14.2||
+sylpheed_DEV-3.7.0-i686-scpup32|sylpheed_DEV|3.7.0-i686-scpup32||Internet|288||sylpheed_DEV-3.7.0-i686-scpup32.pet|+sylpheed|sylpheed development|slackware|14.2||
+sylpheed_NLS-3.7.0-i686-scpup32|sylpheed_NLS|3.7.0-i686-scpup32||Internet|4536||sylpheed_NLS-3.7.0-i686-scpup32.pet|+sylpheed|sylpheed locales||||
 vte-0.28.2|vte|0.28.2|5|Utility;shell|1880K|lxpup|vte-0.28.2-i586-5.txz||terminal emulator widget|slackware|current||
