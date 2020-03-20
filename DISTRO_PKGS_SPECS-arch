@@ -418,4 +418,5 @@ yes|zip|zip|exe,dev>null,doc,nls
 yes|zlib|zlib|exe,dev,doc,nls
 yes|zstd|zstd|exe,dev,doc,nls
 yes|00_apup32_fix||exe
+yes|arch_certs|arch_certs|exe
 '
