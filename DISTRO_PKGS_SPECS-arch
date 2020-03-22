@@ -422,6 +422,6 @@ yes|p11-kit|p11-kit|exe #Might not be needed
 yes|ca-certificates-utils|ca-certificates-utils|exe,doc
 yes|ca-certificates-mozilla|ca-certificates-mozilla|exe
 no|firefox|firefox|exe                                      #If we want firefox put it before arch_certs
-yes|arch_certs|arch_certs|exe
+yes|arch_certs||exe
 yes|00_apup32_fix||exe                          # must be last entry
 '
