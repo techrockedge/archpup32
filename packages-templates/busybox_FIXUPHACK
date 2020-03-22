@@ -5,4 +5,4 @@ mkdir -p ./bin
 mv usr/bin/* ./bin
 rm -rf usr/bin
 
-cp ../00_apup32_fix/bin/busybox.lst ./bin
+cp ../00_apup32_prefix/bin/busybox.lst ./bin
