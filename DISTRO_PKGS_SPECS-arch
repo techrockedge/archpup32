@@ -357,7 +357,7 @@ yes|shared-mime-info||exe,dev,doc,nls
 yes|speex|speex,speexdsp|exe,dev,doc,nls| 					#needed by ffmpeg.
 yes|squashfs-tools|squashfs-tools|exe,dev
 yes|sqlite|sqlite|exe,dev,doc,nls
-no|ssl-certificate-fix||exe,dev,doc,nls|pet:noarch| 		#qtweb needs this.
+yes|ssl-certificate-fix|ca-certificates|exe,doc 		#qtweb needs this.
 yes|startup-notification|startup-notification|exe,dev,doc,nls
 yes|strace|strace|exe>dev,dev,doc,nls
 yes|streamripper||exe,dev,doc,nls
@@ -418,6 +418,10 @@ yes|yasm|yasm|exe>dev,dev,doc,nls
 yes|zip|zip|exe,dev>null,doc,nls
 yes|zlib|zlib|exe,dev,doc,nls
 yes|zstd|zstd|exe,dev,doc,nls
+yes|p11-kit|p11-kit|exe #Might not be needed
+yes|ca-certificates-utils|ca-certificates-utils|exe,doc
+yes|ca-certificates-mozilla|ca-certificates-mozilla|exe
+no|firefox|firefox|exe                                      #If we want firefox put it before arch_certs
 yes|arch_certs||exe
 yes|00_apup32_fix||exe
 '
