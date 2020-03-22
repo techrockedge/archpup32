@@ -1,5 +1,4 @@
 PKGS_SPECS_TABLE='
-yes|00_apup32_prefix||exe                                   #at the moment containsonly only busybox.lst
 yes|a52dec|a52dec|exe,dev,doc,nls
 yes|abiword||exe,dev,doc,nls| 								#+wv,+fribidi,+goffice,+enchant,+gail
 yes|acl|acl|exe,dev,doc,nls
@@ -22,6 +21,7 @@ yes|bdb|db|exe,dev,doc,nls
 yes|bin86|bin86|exe>dev,dev,doc,nls
 yes|binutils|binutils|exe>dev,dev,doc,nls
 yes|bison|bison|exe>dev,dev,doc,nls
+yes|bbl4arch||exe											# busybox.lst for arch
 yes|busybox|busybox|exe,dev>null,doc,nls					# arch version - package template needed
 yes|bzip2|bzip2|exe,dev,doc,nls
 yes|cairo|cairo,cairomm|exe,dev,doc,nls
@@ -422,6 +422,6 @@ yes|p11-kit|p11-kit|exe #Might not be needed
 yes|ca-certificates-utils|ca-certificates-utils|exe,doc
 yes|ca-certificates-mozilla|ca-certificates-mozilla|exe
 no|firefox|firefox|exe                                      #If we want firefox put it before arch_certs
-yes|arch_certs||exe
-yes|00_apup32_fix||exe
+yes|arch_certs|arch_certs|exe
+yes|00_apup32_fix||exe                          # must be last entry
 '
