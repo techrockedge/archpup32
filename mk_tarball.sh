@@ -45,16 +45,27 @@ function process_output(){
 	    #[ -z "$a_file" ] && break
         a_file2="${a_file%/*}"
         a_file2="${a_file2%/}"	    
-	    [ ! -e "$a_file2" ] && cd "$CWD" && continue
-	    if [ -e "$a_root/$a_file2" ] && [ ! -z "$a_file2" ]; then
-	        cd $a_root
+	    [ -z "$(find "$a_root" -wholename "$a_root/$a_file2")" ] && cd "$CWD" && continue
+	    
+	        cd $a_root || { cd "$CWD" && continue; }
 		    if [ -d "$OUT_FILE_PATH" ]; then
-		      cd $a_root
-		      echo "./$a_file2" | cpio -pdu "$OUT_FILE_PATH"
+		      
+		      [ -e "./$a_file2" ] && echo "./$a_file2" | cpio -pdu "$OUT_FILE_PATH"
 		      f_pattern=${a_file##*/}
-		      [ -z f_pattern ] && f_pattern='*'
-		      d_pattern=${a_file%%/*}
-		      [ -d "./$a_file2" ] && find ./"$d_pattern" -name "$f_pattern" | cpio -pdu "$OUT_FILE_PATH"
+		      [ -z "$f_pattern" ] && f_pattern='*'
+		      if [ "$(expr index "$a_file" /)" -gt 0 ]; then
+		        d_pattern=${a_file%%/*}
+		      else
+		        if [ -d "$f_pattern" ]; then
+		          d_pattern="$f_pattern"
+		          f_pattern='*'		        
+		        else
+		          d_pattern=''  
+		        fi
+		      fi
+		      [ ! -f ./"$d_pattern/$f_pattern" ] && \
+		        find ./"$d_pattern" -name "$f_pattern" | cpio -pdu "$OUT_FILE_PATH"
+		      
 		    else
 		      #a_file="${a_file%/*}"
 		      #a_file="${a_file%/}"
@@ -70,7 +81,7 @@ function process_output(){
 		        ;;
 		      esac
 			fi
-	    fi
+	    
 	    
 	  done	
 	#fi
