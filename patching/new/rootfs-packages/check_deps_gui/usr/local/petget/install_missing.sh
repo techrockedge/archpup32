@@ -475,19 +475,97 @@ function split_on_so(){
   echo "$s1"
   echo "$s2"
 }
+function link_lib(){
+  local lib_spec="$1" 
+  local needed_lib="$(echo "$lib_spec" | cut -f1 -d '|' | sed -e 's/^[+]//')"
+  local ONEFILE="$(echo "$lib_spec|" | cut -f2 -d '|')" #this is the executable which needs the lib 
+  local pkg_specs="$2" #e.g. /var/packages/re2-1:20200303.files:14:/usr/lib/libre2.so.6.0.0
+                       #Lib name follows last colon. Package list path is beforefirst colon. 
+  local needed_lib_base="$(echo "$needed_lib" | sed -e 's/[.]so.*$/.so/')"
+  local needed_ver="$(echo "$lib_specs" | sed -e 's/^.*[.]so//' -e 's/^[.]//')"
+  [ -z "needed_ver" ] && needed_ver='0'
+  pkg_specs="$(grep -rn /var/packages -e "$needed_lib_base" | grep .files)"
+  echo $pkg_specs | \
+    while read a_pkg_spec; do
+      
+      lib_to_link="$(echo "$a_pkg_spec" | sed -e 's/.*[.]files:\([0-9]*[:]\)\?//')"
+      
+      lib_fm_pkg="$(echo "$lib_to_link_base" | sed -e 's%.*/\([^/]*\)[.]files.*%\1%g')"
+      needed_lib_path="/usr/lib/$needed_lib"
+      [ ! -z "$needed_ver" ] && needed_lib_path="${needed_lib_path}.${needed_ver}"
+      
+      if [ ! -e "$needed_lib_path" ]; then
+        ldconfig #We probably don't need ldconfig if we link to somewhere in LD LIBRARY_PATH
+        #so maybe don't do a ldconfig here because it is slow. 
+        if [ ! -z "$ONEFILE" ]; then
+          ln -s "$lib_to_link" "$needed_lib_path"
+          if [ ! -z "$(ldd "$ONEFILE" | grep "$needed_lib" | grep "not found")" ]; then
+            rm "$needed_lib_path"
+          else
+            break
+          fi
+        else
+            provided_lib0="$(cat /var/packages/Provides-* | grep ^"$lib_fm_pkg" | cut -f5 -d '|' sed 's/.\('$needed_lib'[^,|$]*\)/\1/g')"
+              provided_ver_range="$(echo "$provided_lib0" | sed -e 's/^.*[.]so[=]//')"
+			  if [ ! -z "$ver_range" ]; then
+			    local provided_min_ver="$(echo "$ver_range" | cut -f1 -d '-')"
+			    local provided_max_ver="$(echo "$ver_range" | cut -f2 -d '-')"
+			    p_min_ver_ary=(${provided_min_ver//./})
+   			    p_max_ver_ary=(${provided_max_ver//./})
+   			    needed_ver_ary=(${needed_ver//./})
+			    i=0
+			    while [ $i -lt ${#needed_ver_ary[@]} ]; do
+			      if [ $i -lt ${#p_min_ver_ary[@]} ]; then
+			        [ ${p_min_ver_ary[$i]} -gt ${needed_ver[$i]} ] && break
+			        [ ${p_max_ver_ary[$i]} -lt ${needed_ver[$i]} ] && break
+			        [ ${needed_ver[$i]} -gt ${p_min_ver_ary[$i]} ] && \
+			          ln -s "$lib_to_link" "$needed_lib_path" && break 2
+			      else
+			        ln -s "$lib_to_link" "$needed_lib_path" && break 2
+			      fi
+			      i=$((i+1))
+			    done
+			  else   
+			    ln -s "$lib_to_link" "$needed_lib_path" && break
+              fi          
+               
+          break
+        fi
+      fi
+    done
+  #if [ -z "$pkg_spec" ]; then
+  #  pkg_specs="$(cat /var/packages/user-installed-packages /var/packages/woof-installed-packages | \
+  #               grep "$need_lib")"
+                 
+  	
+}
 while read a_lib; do
   while read packages_db; do
         REPO_TRIAD=$(basename $packages_db)
         REPO_TRIAD=${REPO_TRIAD#Packages-} #todo MAYBE MAKE THIS MORE ROBUST   
-    for mode in 1 2; do  
+    for mode in 1 2 3; do  
    
       case "$mode" in
       1)
         provides_db="$(echo "$packages_db" | sed 's/^Packages-/^Provides-/')"
-        a_lib="$(echo "$a_lib" | sed -r 's/^(.*)([.]so)(.*)$/\1\2/')"
-        matches="$(cut -f1,5 -d '|' "$provides_db" | grep -F $a_lib )"
+        a_lib_base="$(echo "$a_lib" | sed -r 's/^(.*)([.]so)(.*)$/\1\2/')"
+        matches="$(cut -f1,5 -d '|' "$provides_db" | grep -F $a_lib_base )"
+        if [ ! -z "$matches" ]; then
+          a_pkg="$(echo "$matches" | cut -f1 -d '|')"
+          if [ -f /var/packages/$a_pkg.files ]; then
+            link_lib $a_lib "$(grep -rn "/var/packages/$a_pkg.files" -e "$a_lib")"
+            unset matches
+            break 2
+          else
+            break
+          fi
+        fi
+        
         ;;
-      2) 
+        2)
+          link_lib $a_lib
+          ;;
+      3) 
         pre_guess=$a_lib
         while [ 1 -eq 1 ]; do
           #guess="$(echo "$pre_guess" | sed 's/[.]so[.]/-/')"
@@ -514,16 +592,19 @@ while read a_lib; do
             for a_alias in $aliases; do
 
                 matches="$(cut -f1,2 -d '|' $packages_db | grep "|${a_alias}$")"
-                matches="$(echo "$matches" | grep -v "$(cut -f1,2 -d '|' /var/packages/layers-installed-packages)" | cut f1 -d '|' )"
+                matches="$(echo "$matches" | grep -v "$(cut -f1,2 -d '|' /var/packages/user-installed-packages)" | \ grep -v "$(cut -f1,2 -d '|' /var/packages/woof-installed-packages)" | cut f1 -d '|' )"
                 [ ! -z $matches ] && break 4
 
                 matches="$(cut -f1 -d '|' $packages_db | grep "^${a_alias}")"
-                matches="$(echo "$matches" | grep -v "$(cut -f1 -d '|' /var/packages/layers-installed-packages)" )"
+                matches="$(echo "$matches" | grep -v "$(cut -f1 -d '|' /var/packages/user-installed-packages)" | \
+                 grep -v "$(cut -f1 -d '|' /var/packages/woof-installed-packages)" )"
                 [ ! -z $matches ] && break 4                
               
               ptrn2="${a_alias#lib}"
               if [ "$a_alias" != "$ptrn2" ]; then
-                matches="$(cut -f1 -d '|' $packages_db | grep "^${ptrn2}" | grep lib)"
+                matches="$(cut -f1 -d '|' $packages_db | grep "^${ptrn2}")"
+                matches="$(echo "$matches" | grep -v "$(cut -f1 -d '|' /var/packages/user-installed-packages)" | \
+                 grep -v "$(cut -f1 -d '|' /var/packages/woof-installed-packages)" )"
                 [ ! -z $matches ] && break 4
               fi
             done
@@ -537,7 +618,7 @@ while read a_lib; do
           fi
 
         done     
-        ;;        
+        ;;
       esac
 
     done
