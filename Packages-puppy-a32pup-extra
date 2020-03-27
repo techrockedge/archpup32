@@ -1,7 +1,6 @@
 00_apup32_fix|00_apup32_fix|||System|3028K||00_apup32_fix.pet||Manage running processes|slackware|current||
-00_apup32_prefix-0.1|00_apup32_prefix|0.1||BuildingBlock|20K||00_apup32_prefix-0.1.pet||no description provided||||
 apulse-0.1.12-2_i386_debian|apulse|0.1.12-2_i386_debian||BuildingBlock|200K||apulse-0.1.12-2_i386_debian.pet||no description provided|slackware|current||
-arch_certs-1.0.3|arch_certs|1.0.3||BuildingBlock|64K||arch_certs-1.0.3.pet|+nss&3.51,+ca-certificates&ge20181109,+p11-kit,+ca-certificates-utils&ge20181109,+ca-certificates-mozilla&ge3.51|certs for firefox||||
+arch_certs-1.0.4|arch_certs|1.0.4||BuildingBlock|604K||arch_certs-1.0.4.pet|+nss&3.51,+ca-certificates&ge20181109,+p11-kit,+ca-certificates-utils&ge20181109,+ca-certificates-mozilla&ge3.51|certs for firefox||||
 bbl4arch|bbl4arch|||BuildingBlock|16K||bbl4arch.pet||no description provided||||
 dbus-1.12.16|dbus|1.12.16|1|System|1810K|slackware/a|dbus-1.12.16-i586-1.txz||D-Bus message bus system|slackware|current||
 esound-0.2.41|esound|0.2.41|3|BuildingBlock|360K|lxpup|esound-0.2.41-i586-3.txz||Enlightened Sound Daemon|slackware|current||
