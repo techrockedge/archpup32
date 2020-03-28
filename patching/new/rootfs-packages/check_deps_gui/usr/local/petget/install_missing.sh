@@ -3,6 +3,24 @@ INSTALL_MODE='Step by step installation (classic mode)'
 EXPORT_FNs=false #Setting this to true might provide a way of overriding the functions in the ppm gui.
 USE_installmodes_sh=false
 SKIP_installmodes_sh=false
+[ -e "$1" ] && MISSING_ITEMS_FILE="$1"
+[ ! -e "$MISSING_ITEMS_FILE" && MISSING_ITEMS_FILE=${MISSING_ITEMS_FILE:-/tmp/petget_proc/missinglibs.txt}
+[ ! -e "$MISSING_ITEMS_FILE" && MISSING_ITEMS_FILE=${MISSING_ITEMS_FILE:-/tmp/petget_proc/petget_missingpkgs_patterns}
+
+/tmp/petget_proc/missinglibs.txt
+
+function echo_items(){
+	#cat MISSING_ITEMS_FILE=/tmp/petget_proc/missinglibs.txt | tr [[:space:]] "\n"
+	case "$MISSING_ITEMS_FILE" in
+	*missinglibs.txt)
+	  #cat /tmp/petget_proc/missinglibs.txt | tr [[:space:]] "\n"
+	  cat "$MISSING_ITEMS_FILE" | tr [[:space:]] "\n"
+	  ;;
+	*petget_missingpkgs_patterns)
+	  cat "$MISSING_ITEMS_FILE" | sed -e 's/^[|]//g' -e 's/[|]$//g' | cut -f1 -d '|'
+	  ;;
+	esac
+}
 
 rm /tmp/petget_proc/pkgs_to_install_s243a
 rm /tmp/petget_proc/pkgs_to_install
@@ -539,7 +557,9 @@ function link_lib(){
                  
   	
 }
+
 while read a_lib; do
+  
   while read packages_db; do
         REPO_TRIAD=$(basename $packages_db)
         REPO_TRIAD=${REPO_TRIAD#Packages-} #todo MAYBE MAKE THIS MORE ROBUST   
@@ -632,7 +652,9 @@ while read a_lib; do
 	  sed -n -E '/^[[:space:]]*$/! {s%(.*)%\1|'$REPO_TRIAD'%;p}'  >> /tmp/petget_proc/pkgs_to_install_s243a
 	break
   fi   
-done < <(cat /tmp/petget_proc/missinglibs.txt | tr [[:space:]] "\n" ) 
+done < <( echo_items ) 
+
+#MISSING_ITEMS_FILE=/tmp/petget_proc/missinglibs.txt
 
 while IFS= read line|| [ -n "$line" ]; 
 do     
