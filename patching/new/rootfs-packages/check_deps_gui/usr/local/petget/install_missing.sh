@@ -602,10 +602,13 @@ while read a_lib; do
               
               ptrn2="${a_alias#lib}"
               if [ "$a_alias" != "$ptrn2" ]; then
-                matches="$(cut -f1 -d '|' $packages_db | grep "^${ptrn2}")"
+                matches="$(cut -f1 -d '|' $packages_db | grep "^${ptrn2}" | grep lib)" 
                 matches="$(echo "$matches" | grep -v "$(cut -f1 -d '|' /var/packages/user-installed-packages)" | \
                  grep -v "$(cut -f1 -d '|' /var/packages/woof-installed-packages)" )"
                 [ ! -z $matches ] && break 4
+                 matches="$(cut -f1 -d '|' $packages_db | grep "^${ptrn2}")"
+                matches="$(echo "$matches" | grep -v "$(cut -f1 -d '|' /var/packages/user-installed-packages)" | \
+                 grep -v "$(cut -f1 -d '|' /var/packages/woof-installed-packages)" )"               
               fi
             done
           #done
