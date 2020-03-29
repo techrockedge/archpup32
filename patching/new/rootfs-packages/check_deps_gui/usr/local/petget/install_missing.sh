@@ -4,8 +4,8 @@ EXPORT_FNs=false #Setting this to true might provide a way of overriding the fun
 USE_installmodes_sh=false
 SKIP_installmodes_sh=false
 [ -e "$1" ] && MISSING_ITEMS_FILE="$1"
-[ ! -e "$MISSING_ITEMS_FILE" && MISSING_ITEMS_FILE=${MISSING_ITEMS_FILE:-/tmp/petget_proc/missinglibs.txt}
-[ ! -e "$MISSING_ITEMS_FILE" && MISSING_ITEMS_FILE=${MISSING_ITEMS_FILE:-/tmp/petget_proc/petget_missingpkgs_patterns}
+[ ! -e "$MISSING_ITEMS_FILE" ] && MISSING_ITEMS_FILE=${MISSING_ITEMS_FILE:-/tmp/petget_proc/missinglibs.txt}
+[ ! -e "$MISSING_ITEMS_FILE" ] && MISSING_ITEMS_FILE=${MISSING_ITEMS_FILE:-/tmp/petget_proc/petget_missingpkgs_patterns}
 
 /tmp/petget_proc/missinglibs.txt
 
@@ -503,13 +503,20 @@ function link_lib(){
   local needed_ver="$(echo "$lib_specs" | sed -e 's/^.*[.]so//' -e 's/^[.]//')"
   [ -z "needed_ver" ] && needed_ver='0'
   pkg_specs="$(grep -rn /var/packages -e "$needed_lib_base" | grep .files)"
-  echo $pkg_specs | \
+  echo "$pkg_specs" | \
     while read a_pkg_spec; do
       
-      lib_to_link="$(echo "$a_pkg_spec" | sed -e 's/.*[.]files:\([0-9]*[:]\)\?//')"
-      
-      lib_fm_pkg="$(echo "$lib_to_link_base" | sed -e 's%.*/\([^/]*\)[.]files.*%\1%g')"
+      if [[ "$a_pkg_spec" = *.files ]]; then
+        lib_to_link="$(echo "$a_pkg_spec" | sed -e 's/.*[.]files:\([0-9]*[:]\)\?//')"
+        lib_fm_pkg="$(echo "$lib_to_link_base" | sed -e 's%.*/\([^/]*\)[.]files.*%\1%g')"
+      elif [[ "$a_pkg_spec" = *builtin_files* ]]; then
+        lib_to_link="$(echo "$a_pkg_spec" | sed -e 's%.*/builtin_files/[^:]*:\([0-9]*[:]\)\?%%')"
+        lib_fm_pkg="$(echo "$lib_to_link_base" | sed -e 's%.*/\([^/]*\)[:].*$%\1%g')"      
+      else 
+        continue
+      fi
       needed_lib_path="/usr/lib/$needed_lib"
+      [ -h "$needed_lib_path" ] && [ ! -e "$needed_lib_path" ] && rm "$needed_lib_path"
       [ ! -z "$needed_ver" ] && needed_lib_path="${needed_lib_path}.${needed_ver}"
       
       if [ ! -e "$needed_lib_path" ]; then
@@ -524,8 +531,8 @@ function link_lib(){
           fi
         else
             provided_lib0="$(cat /var/packages/Provides-* | grep ^"$lib_fm_pkg" | cut -f5 -d '|' sed 's/.\('$needed_lib'[^,|$]*\)/\1/g')"
-              provided_ver_range="$(echo "$provided_lib0" | sed -e 's/^.*[.]so[=]//')"
-			  if [ ! -z "$ver_range" ]; then
+            [ ! -z "$provided_lib0" ] && provided_ver_range="$(echo "$provided_lib0" | sed -e 's/^.*[.]so[=]//')"
+			  if [ ! -z "$provided_ver_range" ]; then
 			    local provided_min_ver="$(echo "$ver_range" | cut -f1 -d '-')"
 			    local provided_max_ver="$(echo "$ver_range" | cut -f2 -d '-')"
 			    p_min_ver_ary=(${provided_min_ver//./})
@@ -567,6 +574,7 @@ while read a_lib; do
    
       case "$mode" in
       1)
+        [ -z "$( echo "$a_lib" | grep '[.]so\([.]\|$\)')" ] && continue
         provides_db="$(echo "$packages_db" | sed 's/^Packages-/^Provides-/')"
         a_lib_base="$(echo "$a_lib" | sed -r 's/^(.*)([.]so)(.*)$/\1\2/')"
         matches="$(cut -f1,5 -d '|' "$provides_db" | grep -F $a_lib_base )"
@@ -583,6 +591,7 @@ while read a_lib; do
         
         ;;
         2)
+          [ -z "$( echo "$a_lib" | grep '[.]so\([.]\|$\)')" ] && continue
           link_lib $a_lib
           ;;
       3) 
@@ -658,6 +667,9 @@ done < <( echo_items )
 
 while IFS= read line|| [ -n "$line" ]; 
 do     
+  a_pkg="$(echo "$line" | cut -f1 -d '|' grep -v "$(cut -f1 -d '|' /var/packages/woof-installed-packages)"  | \
+                grep -v "$(cut -f1 -d '|' /var/packages/user-installed-packages)" )"
+  [ -z "${a_pkg}" ] && continue
   export TREE1=$line
   
   #echo $TREE1 > /tmp/petget_proc/forced_install
