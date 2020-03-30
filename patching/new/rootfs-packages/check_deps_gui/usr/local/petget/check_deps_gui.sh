@@ -245,7 +245,7 @@ function do_install_missing(){
 	#rxvt -title "$VTTITLE... $(gettext 'Do NOT close')" \
 	#  -fn -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-*-* -bg black \
     #  -fg grey -geometry 80x5+50+50 -e '/usr/local/petget/install_missing.sh'
-    bash -x /usr/local/petget/install_missing.sh | tee /tmp/install_missing.log
+    bash -x /usr/local/petget/install_missing.sh "$1" | tee /tmp/install_missing.log
     #set +x
 }
 export -f do_install_missing
@@ -258,12 +258,15 @@ export DEPS_DIALOG="<window title=\"$(gettext 'Puppy Package Manager')\" icon-na
    <vbox scrollable=\"true\" height=\"100\">
     ${MISSINGMSG1}
    </vbox>
+   <hbox>
+   <button><label>install</label><action>do_install_missing /tmp/petget_proc/missinglibs.txt</action></button>
+   </hbox>
    <text><label>$(gettext 'Puppy has examined all user-installed packages and found these missing dependencies:')</label></text>
    ${MISSINGMSG2}
    <hbox>
     ${DETAILSBUTTON}
     <button ok></button>
-    <button><label>install</label><action>do_install_missing</action></button>
+    <button><label>install</label><action>do_install_missing /tmp/petget_proc/petget_missingpkgs_patterns</action></button>
    </hbox>
   </vbox>
  </window>
